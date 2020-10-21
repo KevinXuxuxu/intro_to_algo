@@ -16,7 +16,7 @@ def heapify(heap: List[Any],
     '''
     if heap_size is None:
         heap_size = len(heap)
-    compare = lambda x, y: x <= y if reverse else x > y
+    compare = lambda x, y: x <= y if reverse else x >= y
     # +1 and -1 to transform from 0-index to 1-index
     l = (i + 1) * 2 - 1
     r = l + 1
@@ -45,7 +45,7 @@ def build_heap(nums: List[int],
 
 
 def _verify_heap(heap: List[int], i: int, reverse: bool = False) -> bool:
-    compare = lambda x, y: x <= y if reverse else x > y
+    compare = lambda x, y: x <= y if reverse else x >= y
     # +1 and -1 to transform from 0-index to 1-index
     l = (i + 1) * 2 - 1
     r = l + 1

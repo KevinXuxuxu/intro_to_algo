@@ -1,5 +1,7 @@
 # 6.4
 
+import json
+
 from typing import List
 from my_heap import build_heap, heapify
 
@@ -30,6 +32,18 @@ def main():
         if not expected == nums:
             print('{} != {}'.format(nums, expected))
             return
+    with open('../random_sort_test_cases.json') as f:
+        random_test_cases = json.load(f)
+        for nums in random_test_cases:
+            nums_copy = nums.copy()
+            heap_sort(nums)
+            benchmark = sorted(nums_copy)
+            if nums != benchmark:
+                print('random test failed')
+                print(nums)
+                print(benchmark)
+                return
+    
     print('All test cases passed')
 
 

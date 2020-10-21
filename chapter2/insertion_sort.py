@@ -1,4 +1,7 @@
 # 2.1
+
+import json
+
 from typing import List
 
 def insertion_sort(nums: List[int], reverse: bool = False) -> List[int]:
@@ -10,7 +13,7 @@ def insertion_sort(nums: List[int], reverse: bool = False) -> List[int]:
     :param nums: list of integers to be sorted
     :param reverse: will sort in descending order if True
     '''
-    compare = lambda x, y: x <= y if reverse else x > y
+    compare = lambda x, y: x <= y if reverse else x >= y
     for i in range(1, len(nums)):
         x = nums[i]
         j = i
@@ -32,6 +35,16 @@ def main():
         if not expected == result:
             print('{} != {}'.format(result, expected))
             return
+    with open('../random_sort_test_cases.json') as f:
+        random_test_cases = json.load(f)
+        for nums in random_test_cases:
+            result = insertion_sort(nums)
+            benchmark = sorted(nums)
+            if result != benchmark:
+                print('random test failed')
+                print(result)
+                print(benchmark)
+                return
     print('All test cases passed')
 
 
