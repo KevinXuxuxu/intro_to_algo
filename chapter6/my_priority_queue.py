@@ -109,4 +109,40 @@ class PriorityQueue:
         self.position[new_index] = i
         self._float(i)
         self._sink(i)
-        
+
+
+def main():
+    test_actions = [
+        ('insert', (1, '1'), 1),
+        ('insert', (5, '5'), 5),
+        ('insert', (2, '2'), 5),
+        ('insert', (4, '4'), 5),
+        ('insert', (7, '7'), 7),
+        ('extract', 5),
+        ('extract', 4),
+        ('insert', (6, '6'), 6),
+        ('update', '2', (8, '8'), 8),
+        ('insert', (3, '3'), 8),
+        ('extract', 6),
+        ('extract', 4),
+        ('extract', 3)
+    ]
+    q = PriorityQueue(index=lambda x: x[1], key=lambda x: x[0])
+    for action in test_actions:
+        if action[0] == 'insert':
+            q.insert(action[1])
+            expected = action[2]
+        elif action[0] == 'extract':
+            q.extract()
+            expected = action[1]
+        elif action[0] == 'update':
+            q.update(action[1], action[2])
+            expected = action[3]
+        if q.peek()[0] != expected:
+            print('Peek priority queue does not match expected: {} != {}'.format(
+                q.peek()[0], expected))
+            return
+    print('All test cases passed')
+
+if __name__ == '__main__':
+    main()
