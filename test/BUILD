@@ -22,5 +22,6 @@ py_test(
         "//chapter7:quick_sort",
         "//chapter8:counting_sort",
         "//chapter8:radix_sort",
+        "//chapter8:bucket_sort",
     ],
 )
