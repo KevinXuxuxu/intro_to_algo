@@ -6,3 +6,10 @@ py_library(
         "counting_sort.py",
     ],
 )
+
+py_library(
+    name = "radix_sort",
+    srcs = [
+        "radix_sort.py"
+    ],
+)

@@ -8,6 +8,7 @@ from chapter2.merge_sort import merge_sort
 from chapter6.heap_sort import heap_sort
 from chapter7.quick_sort import quick_sort
 from chapter8.counting_sort import counting_sort
+from chapter8.radix_sort import radix_sort
 
 RANDOM_SORT_TEST_INPUT = 'test/random_sort_test_cases.json'
 
@@ -52,6 +53,9 @@ class SortTest(unittest.TestCase):
         def sort(nums: List[int], reverse: bool) -> List[int]:
             return counting_sort(nums, (-10000, 10000), reverse)
         self._test_sort(sort)
+
+    def test_radix_sort(self):
+        self._test_sort(radix_sort)
 
 
 if __name__ == '__main__':
