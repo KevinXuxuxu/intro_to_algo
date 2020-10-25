@@ -2,7 +2,7 @@ import unittest
 
 from chapter6.my_priority_queue import PriorityQueue
 
-class MyPriorityQueue(unittest.TestCase):
+class MyPriorityQueueTest(unittest.TestCase):
     test_actions = [
         ('insert', (1, '1'), 1),
         ('insert', (5, '5'), 5),
