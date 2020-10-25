@@ -1,9 +1,8 @@
 # 6.4
 
-import json
-
 from typing import List
-from my_heap import build_heap, heapify
+
+from chapter6.my_heap import build_heap, heapify
 
 def heap_sort(nums: List[int], reverse: bool = False) -> None:
     '''
@@ -19,33 +18,3 @@ def heap_sort(nums: List[int], reverse: bool = False) -> None:
     for i in range(len(nums) - 1, 1, -1):
         heapify(nums, 0, reverse, i)
         nums[0], nums[i-1] = nums[i-1], nums[0]
-
-
-def main():
-    test_cases = [
-        ([4, 7, 1, 5, 8, 2, 6, 9, 10, 3], False, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
-        ([7, 6, 5, 4, 3, 2, 1], False, [1, 2, 3, 4, 5, 6, 7]),
-        ([1, 2, 3, 4, 5, 6, 7], True, [7, 6, 5, 4, 3, 2, 1])
-    ]
-    for nums, reverse, expected in test_cases:
-        heap_sort(nums, reverse)
-        if not expected == nums:
-            print('{} != {}'.format(nums, expected))
-            return
-    with open('../random_sort_test_cases.json') as f:
-        random_test_cases = json.load(f)
-        for nums in random_test_cases:
-            nums_copy = nums.copy()
-            heap_sort(nums)
-            benchmark = sorted(nums_copy)
-            if nums != benchmark:
-                print('random test failed')
-                print(nums)
-                print(benchmark)
-                return
-    
-    print('All test cases passed')
-
-
-if __name__ == '__main__':
-    main()

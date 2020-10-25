@@ -1,7 +1,4 @@
 # 7.1
-
-import json
-
 from typing import List
 from random import randint
 
@@ -85,33 +82,3 @@ def quick_sort(nums: List[int], l: int, r: int, reverse: bool = False) -> None:
         quick_sort(nums, l, k-1, reverse)
     if k+1 < r:
         quick_sort(nums, k+1, r, reverse)
-
-
-def main():
-    test_cases = [
-        ([4, 7, 1, 5, 8, 2, 6, 9, 10, 3], False, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
-        ([7, 6, 5, 4, 3, 2, 1], False, [1, 2, 3, 4, 5, 6, 7]),
-        ([1, 2, 3, 4, 5, 6, 7], True, [7, 6, 5, 4, 3, 2, 1])
-    ]
-    for nums, reverse, expected in test_cases:
-        quick_sort(nums, 0, len(nums) - 1, reverse)
-        if not expected == nums:
-            print('{} != {}'.format(nums, expected))
-            return
-    with open('../random_sort_test_cases.json') as f:
-        random_test_cases = json.load(f)
-        for nums in random_test_cases:
-            nums_copy = nums.copy()
-            quick_sort(nums, 0, len(nums) - 1)
-            benchmark = sorted(nums_copy)
-            if nums != benchmark:
-                print('random test failed')
-                print(nums)
-                print(benchmark)
-                return
-
-    print('All test cases passed')
-
-
-if __name__ == '__main__':
-    main()
