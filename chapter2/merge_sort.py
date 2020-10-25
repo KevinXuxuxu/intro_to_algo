@@ -2,6 +2,8 @@
 
 from typing import List
 
+from utils.sort_utils import get_compare
+
 def merge_sort(nums: List[int], reverse: bool = False) -> List[int]:
     '''
     Implementation of merge sort on integer list
@@ -10,7 +12,7 @@ def merge_sort(nums: List[int], reverse: bool = False) -> List[int]:
     :param nums: list of integers to be sorted
     :param reverse: will sort in descending order if True
     '''
-    compare = lambda x, y: x <= y if reverse else x >= y
+    compare = get_compare(reverse)
     if len(nums) <= 1:
         return nums
     if len(nums) == 2:

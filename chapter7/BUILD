@@ -5,4 +5,7 @@ py_library(
     srcs = [
         "quick_sort.py",
     ],
+    deps = [
+        "//utils:sort_utils",
+    ],
 )

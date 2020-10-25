@@ -3,10 +3,11 @@ import unittest
 from typing import List
 
 from chapter6.my_heap import build_heap
+from utils.sort_utils import get_compare
 
 
 def _verify_heap(heap: List[int], i: int, reverse: bool = False) -> bool:
-    compare = lambda x, y: x <= y if reverse else x >= y
+    compare = get_compare(reverse)
     # +1 and -1 to transform from 0-index to 1-index
     l = (i + 1) * 2 - 1
     r = l + 1

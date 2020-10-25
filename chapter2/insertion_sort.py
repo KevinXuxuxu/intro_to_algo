@@ -2,6 +2,8 @@
 
 from typing import List
 
+from utils.sort_utils import get_compare
+
 def insertion_sort(nums: List[int], reverse: bool = False) -> List[int]:
     '''
     Implementation of insertion sort on integer list
@@ -11,7 +13,7 @@ def insertion_sort(nums: List[int], reverse: bool = False) -> List[int]:
     :param nums: list of integers to be sorted
     :param reverse: will sort in descending order if True
     '''
-    compare = lambda x, y: x <= y if reverse else x >= y
+    compare = get_compare(reverse)
     for i in range(1, len(nums)):
         x = nums[i]
         j = i

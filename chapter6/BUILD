@@ -5,6 +5,9 @@ py_library(
     srcs = [
         "my_heap.py",
     ],
+    deps = [
+        "//utils:sort_utils",
+    ],
 )
 
 py_test(
@@ -14,6 +17,7 @@ py_test(
     ],
     deps = [
         ":my_heap",
+        "//utils:sort_utils",
     ],
 )
 

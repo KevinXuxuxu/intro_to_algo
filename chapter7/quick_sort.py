@@ -2,6 +2,8 @@
 from typing import List
 from random import randint
 
+from utils.sort_utils import get_compare
+
 
 def randomize(nums: List[int], l: int, r: int) -> None:
     '''
@@ -23,7 +25,7 @@ def partition(nums: List[int], l: int, r: int, reverse: bool = False) -> int:
     :param reverse: will put elements larger than pivot before if True
     :return: final index of pivot
     '''
-    compare = lambda x, y: x <= y if reverse else x >= y
+    compare = get_compare(reverse)
     randomize(nums, l, r)
     p = nums[r]
     i = l - 1
@@ -48,7 +50,7 @@ def my_partition(nums: List[int], l: int, r: int, reverse: bool = False) -> int:
     :param reverse: will put elements larger than pivot before if True
     :return: final index of pivot
     '''
-    compare = lambda x, y: x <= y if reverse else x >= y
+    compare = get_compare(reverse)
     randomize(nums, l, r)
     p = nums[r]
     i, j = l, r-1

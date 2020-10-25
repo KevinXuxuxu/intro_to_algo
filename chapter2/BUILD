@@ -5,11 +5,17 @@ py_library(
     srcs = [
         "merge_sort.py",
     ],
+    deps = [
+        "//utils:sort_utils",
+    ],
 )
 
 py_library(
     name = "insertion_sort",
     srcs = [
         "insertion_sort.py",
+    ],
+    deps = [
+        "//utils:sort_utils",
     ],
 )
